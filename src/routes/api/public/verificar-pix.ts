@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { z } from "zod";
-import { PIX_PLANS, amountToCents, verifyPaymentToken } from "@/lib/pix-payments";
 
 const SYNCPAY_BASE = "https://api.syncpayments.com.br/api/partner/v1";
 
@@ -51,39 +49,18 @@ function mapStatus(s: string | undefined): string {
   }
 }
 
-const requestSchema = z.object({
-  paymentToken: z.string().min(20).max(2_000),
-}).strict();
-
 export const Route = createFileRoute("/api/public/verificar-pix")({
   server: {
     handlers: {
       OPTIONS: async () => new Response(null, { status: 204, headers: CORS }),
       POST: async ({ request }) => {
         try {
-          const parsed = requestSchema.safeParse(await request.json().catch(() => null));
-          const signingSecret = process.env.SYNCPAY_CLIENT_SECRET;
-          const reference = parsed.success && signingSecret
-            ? verifyPaymentToken(parsed.data.paymentToken, signingSecret)
-            : null;
-          if (!reference) {
+          const body = await request.json().catch(() => ({}));
+          const transactionId = String(body?.transactionId ?? "").trim();
+          if (!transactionId) {
             return Response.json(
-              { error: "Referência de pagamento inválida" },
+              { error: "transactionId obrigatório" },
               { status: 400, headers: CORS },
-            );
-          }
-          const { transactionId, planId } = reference;
-          const expectedPlan = PIX_PLANS[planId];
-          if (reference.amountCents !== expectedPlan.amountCents) {
-            console.error("[pix-payment-reference-mismatch]", {
-              transactionId,
-              planId,
-              signedAmountCents: reference.amountCents,
-              expectedAmountCents: expectedPlan.amountCents,
-            });
-            return Response.json(
-              { error: "Referência de pagamento inconsistente" },
-              { status: 409, headers: CORS },
             );
           }
           const token = await getAccessToken();
@@ -99,37 +76,12 @@ export const Route = createFileRoute("/api/public/verificar-pix")({
               { status: res.status, headers: CORS },
             );
           }
-          const providerStatus = String(data?.data?.status ?? "");
-          const transactionState = mapStatus(providerStatus);
-          const providerAmountCents = amountToCents(data?.data?.amount);
-          if (transactionState === "COMPLETO" && providerAmountCents !== expectedPlan.amountCents) {
-            console.error("[pix-confirmation-rejected-amount-mismatch]", {
-              transactionId,
-              planId,
-              providerAmount: data?.data?.amount,
-              providerAmountCents,
-              expectedAmountCents: expectedPlan.amountCents,
-            });
-            return Response.json(
-              {
-                error: "Valor confirmado diverge do plano contratado",
-                transaction: {
-                  transactionState: "VALOR_DIVERGENTE",
-                  identifier: transactionId,
-                  plano_id: planId,
-                },
-              },
-              { status: 409, headers: CORS },
-            );
-          }
-
           return Response.json(
             {
               transaction: {
-                transactionState,
-                amount: providerAmountCents === null ? null : providerAmountCents / 100,
+                transactionState: mapStatus(data?.data?.status),
+                amount: data?.data?.amount,
                 identifier: transactionId,
-                plano_id: planId,
               },
             },
             { headers: CORS },
