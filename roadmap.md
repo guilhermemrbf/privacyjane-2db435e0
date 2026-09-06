@@ -1,0 +1,4 @@
+- [ ] Make Pix prices server-authoritative by plan ID
+- [ ] Validate SyncPay confirmed amount against expected plan amount
+- [ ] Remove frontend price persistence/input and fetch current server price
+- [ ] Test Pix generation for all four plans

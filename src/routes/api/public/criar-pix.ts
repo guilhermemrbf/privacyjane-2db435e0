@@ -1,4 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
+import {
+  PIX_PLANS,
+  centsToAmount,
+  createPaymentToken,
+  isPixPlanId,
+} from "@/lib/pix-payments";
 
 const SYNCPAY_BASE = "https://api.syncpayments.com.br/api/partner/v1";
 
@@ -44,22 +51,27 @@ const DEFAULT_CLIENT = {
   phone: "11999999999",
 };
 
+const requestSchema = z.object({
+  plano_id: z.string().min(1).max(50),
+}).strict();
+
 export const Route = createFileRoute("/api/public/criar-pix")({
   server: {
     handlers: {
       OPTIONS: async () => new Response(null, { status: 204, headers: CORS }),
       POST: async ({ request }) => {
         try {
-          const body = await request.json().catch(() => ({}));
-          const amount = Number(body?.amount);
-          const plano = String(body?.plano ?? "Assinatura");
-
-          if (!amount || amount <= 0) {
+          const parsed = requestSchema.safeParse(await request.json().catch(() => null));
+          if (!parsed.success || !isPixPlanId(parsed.data.plano_id)) {
             return Response.json(
-              { success: false, error: "Valor inválido" },
+              { success: false, error: "Plano inválido" },
               { status: 400, headers: CORS },
             );
           }
+
+          const planId = parsed.data.plano_id;
+          const plan = PIX_PLANS[planId];
+          const amount = centsToAmount(plan.amountCents);
 
           const token = await getAccessToken();
 
@@ -68,7 +80,7 @@ export const Route = createFileRoute("/api/public/criar-pix")({
 
           const payload = {
             amount,
-            description: `Assinatura ${plano}`,
+            description: `Assinatura ${plan.label} [plano:${planId}]`,
             webhook_url: webhookUrl,
             client: DEFAULT_CLIENT,
           };
@@ -94,10 +106,23 @@ export const Route = createFileRoute("/api/public/criar-pix")({
             );
           }
 
+
+          const signingSecret = process.env.SYNCPAY_CLIENT_SECRET;
+          if (!signingSecret) throw new Error("SyncPay credentials not configured");
+          const transactionId = String(data.identifier);
+          const paymentToken = createPaymentToken(
+            { transactionId, planId, amountCents: plan.amountCents, issuedAt: Date.now() },
+            signingSecret,
+          );
+
           return Response.json(
             {
               success: true,
-              transactionId: data.identifier,
+              transactionId,
+              paymentToken,
+              plano_id: planId,
+              planLabel: plan.label,
+              amount,
               copyPaste: data.pix_code,
             },
             { headers: CORS },
