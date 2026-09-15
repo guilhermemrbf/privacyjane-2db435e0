@@ -171,7 +171,8 @@ function verificar(){
       var s = d.transaction && d.transaction.transactionState;
       if(s === 'COMPLETO'){
         clearInterval(poll); poll = null;
-        window.location.href = DESTINO + '?extra=1';
+        try{ localStorage.setItem('taxa_liberacao_paga', txId); }catch(e){}
+        window.location.href = DESTINO + '?taxa=' + encodeURIComponent(txId);
       }
     }catch(e){}
   }, 5000);
