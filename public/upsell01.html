@@ -55,28 +55,36 @@
 </head>
 <body>
   <main class="wrap">
-    <span class="tag">OFERTA ÚNICA · SÓ AGORA</span>
-    <h1>Antes de acessar, libere o <span>conteúdo extra</span> da Jane</h1>
-    <p class="lead">Você já garantiu o seu acesso. Esta é a única vez que este pacote extra aparece — e ele não volta depois que você sair desta página.</p>
+    <span class="tag">ETAPA FINAL DE LIBERAÇÃO</span>
+    <h1>🎉 Bem-vindo ao <span>MAIOR Privacy do Brasil</span></h1>
+    <p class="lead">Seu acesso vitalício já foi reservado com sucesso ✔️<br />Falta apenas 1 etapa para liberar sua entrada completa no grupo VIP.</p>
+
+    <p class="lead"><b>🎥 Assista ao vídeo abaixo</b><br />Entenda como funciona a liberação do seu acesso 👇</p>
 
     <div class="video">
       <video src="/videos/upsell01.mp4" controls playsinline preload="metadata" poster="/images/capa.jpeg"></video>
     </div>
 
+    <h2 style="margin-top:24px;font-size:18px;font-weight:800">🔒 Etapa final de liberação</h2>
+    <p class="lead">Para concluir a liberação do seu acesso é necessário o pagamento da taxa de liberação. Trata-se de uma cobrança única e não reembolsável, exigida para a execução e liberação do serviço adquirido.</p>
+
     <ul class="bul">
-      <li><b>Pacote extra completo</b> liberado junto com o seu acesso principal.</li>
-      <li><b>Entrega imediata</b> no mesmo canal, sem esperar aprovação manual.</li>
-      <li><b>Preço único</b> desta página — depois volta ao valor cheio.</li>
+      <li>✓ Acesso completo aos grupos</li>
+      <li>✓ Conteúdo exclusivo desbloqueado</li>
+      <li>✓ Entrada após a confirmação do pagamento</li>
+    </ul>
+
+    <ul class="bul">
+      <li><b>⚠️ Importante:</b> o pagamento desta taxa é obrigatório e não é reembolsado após o pagamento.</li>
     </ul>
 
     <div class="price">
-      <div class="old">R$ 39,90</div>
-      <div class="now">R$ 13,99 <small>à vista no PIX</small></div>
-      <button class="btn" id="cta" type="button">LIBERAR MEU EXTRA AGORA</button>
+      <div class="now">R$ 13,99 <small>cobrança única</small></div>
+      <button class="btn" id="cta" type="button">PAGAR TAXA DE LIBERAÇÃO — R$ 13,99</button>
     </div>
 
-    <a class="skip" href="/aprovado.html">Não quero o extra, seguir para o meu acesso</a>
-    <p class="safe">Pagamento processado com segurança via PIX. Assim que o pagamento for confirmado você é levado direto para a página de liberação do seu acesso.</p>
+    <h2 style="margin-top:24px;font-size:16px;font-weight:800;text-align:center">🔐 Seu acesso está reservado</h2>
+    <p class="safe">Pagamento processado com segurança via Pix.</p>
   </main>
 
   <div class="ov" id="ov">
@@ -163,7 +171,8 @@ function verificar(){
       var s = d.transaction && d.transaction.transactionState;
       if(s === 'COMPLETO'){
         clearInterval(poll); poll = null;
-        window.location.href = DESTINO + '?extra=1';
+        try{ localStorage.setItem('taxa_liberacao_paga', txId); }catch(e){}
+        window.location.href = DESTINO + '?taxa=' + encodeURIComponent(txId);
       }
     }catch(e){}
   }, 5000);
