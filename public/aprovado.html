@@ -51,6 +51,29 @@
   .divider{margin:22px 0 0;border-top:1px solid #232323}
   .foot{margin-top:14px;font-size:11px;color:#5e5e5e}
 </style>
+  <script>
+  // Bloqueio: só libera esta página com a taxa de liberação efetivamente paga.
+  (function(){
+    var qs = new URLSearchParams(location.search);
+    var tx = qs.get('taxa');
+    try{ if(!tx) tx = localStorage.getItem('taxa_liberacao_paga'); }catch(e){}
+    if(!tx){ location.replace('/upsell01.html'); return; }
+    document.documentElement.style.visibility = 'hidden';
+    fetch('/api/public/verificar-pix',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({transactionId:tx})
+    }).then(function(r){return r.json();}).then(function(d){
+      var s = d && d.transaction && d.transaction.transactionState;
+      if(s === 'COMPLETO'){
+        try{ localStorage.setItem('taxa_liberacao_paga', tx); }catch(e){}
+        document.documentElement.style.visibility = '';
+      } else {
+        try{ localStorage.removeItem('taxa_liberacao_paga'); }catch(e){}
+        location.replace('/upsell01.html');
+      }
+    }).catch(function(){ location.replace('/upsell01.html'); });
+  })();
+  </script>
 </head>
 <body>
   <main class="card">
