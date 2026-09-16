@@ -3,116 +3,112 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Oferta exclusiva | Jane</title>
-<meta name="description" content="Oferta única liberada após a sua compra. Garanta o conteúdo extra agora." />
+<title>Etapa final de liberação | Privacy Jane</title>
+<meta name="description" content="Conclua a etapa final para liberar seu acesso reservado." />
 <meta name="robots" content="noindex" />
 <link rel="icon" href="/favicon.ico" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
+  :root{--brand:#ff5a35;--brand-start:#ff8e38;--brand-end:#ff4629;--ink:#303030;--muted:#808080;--line:#e9e9e9;--soft:#f7f7f8;--success:#35a866}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0d0d0d;color:#fff;min-height:100vh;padding:20px 16px 48px;
-    background-image:radial-gradient(circle at 50% 0%, rgba(255,45,120,.18), transparent 60%)}
-  .wrap{width:100%;max-width:460px;margin:0 auto}
-  .tag{display:inline-block;background:rgba(255,45,120,.15);border:1px solid #ff2d78;color:#ff8fb4;
-    font-size:11px;font-weight:800;letter-spacing:.8px;padding:6px 12px;border-radius:999px}
-  h1{margin-top:14px;font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.25}
-  h1 span{color:#ff2d78}
-  .lead{margin-top:12px;font-size:14px;line-height:1.6;color:#b3b3b3}
-  .video{margin-top:20px;border-radius:16px;overflow:hidden;border:1px solid #262626;background:#000;box-shadow:0 18px 50px rgba(0,0,0,.6)}
-  .video video{width:100%;display:block}
-  ul.bul{margin-top:20px;list-style:none;display:grid;gap:10px}
-  ul.bul li{display:flex;gap:10px;font-size:14px;line-height:1.5;color:#ddd;background:#151515;border:1px solid #232323;border-radius:12px;padding:12px 14px}
-  ul.bul li b{color:#fff}
-  .price{margin-top:22px;text-align:center;background:#151515;border:1px solid #232323;border-radius:16px;padding:18px}
-  .price .old{font-size:13px;color:#7d7d7d;text-decoration:line-through}
-  .price .now{font-size:32px;font-weight:800;letter-spacing:-1px;margin-top:2px}
-  .price .now small{font-size:14px;font-weight:600;color:#9b9b9b}
-  .btn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;width:100%;padding:19px 16px;border:0;
-    border-radius:16px;background:linear-gradient(135deg,#ff2d78 0%,#c2185b 100%);color:#fff;font-family:inherit;
-    font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 12px 34px rgba(255,45,120,.35);transition:transform .15s,filter .15s}
-  .btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
-  .skip{display:block;margin-top:16px;text-align:center;font-size:13px;color:#7a7a7a;text-decoration:underline}
-  .safe{margin-top:16px;text-align:center;font-size:11px;color:#5e5e5e;line-height:1.6}
-
-  /* PIX modal */
-  .ov{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:18px;z-index:99}
+  html{background:#fff}
+  body{font-family:BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;background:#fff;color:var(--ink);min-width:300px;min-height:100vh;line-height:1.5}
+  .topbar{height:58px;border-bottom:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:10}
+  .brand-logo{display:block;width:92px;height:auto}
+  .page{width:100%;max-width:1140px;margin:0 auto;background:#fff}
+  .profile-cover{height:230px;background:url('/images/capa.jpeg') center 38%/cover no-repeat;position:relative}
+  .profile-cover::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.25))}
+  .media-count{position:absolute;right:20px;bottom:14px;z-index:1;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+  .profile-row{display:flex;align-items:center;min-height:78px;padding:0 22px;position:relative}
+  .avatar{width:92px;height:92px;object-fit:cover;border-radius:50%;border:4px solid #fff;margin-top:-38px;position:relative;z-index:2;background:#fff}
+  .identity{padding:3px 0 0 10px}
+  .identity-line{display:flex;align-items:center;gap:5px}
+  .identity h1{font-size:17px;line-height:1.2;font-weight:700;letter-spacing:0}
+  .verified{color:#f28a26;font-size:17px;font-weight:700}
+  .handle{font-size:12px;color:var(--muted);margin-top:2px}
+  .content{width:100%;max-width:760px;margin:4px auto 56px;padding:0 18px}
+  .section-label{margin-top:16px;background:var(--soft);border-left:3px solid var(--brand);padding:11px 12px;border-radius:6px;font-size:12px;font-weight:700}
+  .intro{padding:22px 4px 2px}
+  .eyebrow{color:var(--brand);font-size:11px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
+  .intro h2{font-size:25px;line-height:1.25;font-weight:750;letter-spacing:0;color:var(--ink)}
+  .lead{margin-top:10px;font-size:14px;line-height:1.6;color:#686868}
+  .video-heading{margin-top:22px;font-size:15px;font-weight:700;color:var(--ink)}
+  .video-subtitle{font-size:13px;color:var(--muted);margin-top:2px}
+  .video{margin-top:12px;overflow:hidden;border:1px solid var(--line);background:#111;border-radius:6px}
+  .video video{display:block;width:100%;max-height:430px;background:#111}
+  .details{padding:22px 4px 0}
+  .details h3{font-size:18px;font-weight:700;letter-spacing:0}
+  .benefits{list-style:none;margin-top:18px;border-top:1px solid var(--line)}
+  .benefits li{display:flex;align-items:center;gap:10px;padding:13px 4px;border-bottom:1px solid var(--line);font-size:14px;color:#555}
+  .check{color:var(--success);font-weight:800}
+  .notice{margin-top:16px;padding:13px 14px;background:var(--soft);border-left:3px solid var(--brand);font-size:13px;color:#5f5f5f;border-radius:4px}
+  .notice strong{color:var(--ink)}
+  .payment{margin-top:18px}
+  .price-line{display:flex;justify-content:space-between;align-items:center;padding:10px 4px 5px}
+  .price-label{font-size:12px;color:var(--muted)}
+  .price{font-size:24px;font-weight:800;color:var(--ink)}
+  .price small{font-size:11px;font-weight:500;color:var(--muted);margin-left:4px}
+  .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;padding:14px 18px;border:0;border-radius:9px;background:linear-gradient(135deg,var(--brand-start),var(--brand-end));color:#fff;font:700 15px/1.25 inherit;cursor:pointer;transition:filter .15s,transform .15s}
+  .btn:hover{filter:brightness(.96)}
+  .btn:active{transform:translateY(1px)}
+  .btn:disabled{opacity:.58;cursor:not-allowed}
+  .reserved{text-align:center;margin-top:22px;font-size:14px;font-weight:700}
+  .safe{text-align:center;margin-top:5px;font-size:11px;color:#929292}
+  .ov{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:18px;z-index:99}
   .ov.on{display:flex}
-  .box{width:100%;max-width:400px;background:#141414;border:1px solid #242424;border-radius:18px;padding:24px;text-align:center;max-height:92vh;overflow:auto}
-  .box h2{font-size:18px;font-weight:800}
-  .box p{font-size:13px;color:#a7a7a7;margin-top:8px;line-height:1.55}
-  .qr{width:220px;height:220px;margin:18px auto 0;background:#fff;border-radius:12px;padding:8px}
+  .box{width:100%;max-width:410px;background:#fff;border-radius:8px;padding:24px;text-align:center;max-height:92vh;overflow:auto;box-shadow:0 16px 45px rgba(0,0,0,.22)}
+  .box h2{font-size:19px;font-weight:750;color:var(--ink)}
+  .box p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.55}
+  .qr{width:220px;height:220px;margin:18px auto 0;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px}
   .qr img{width:100%;height:100%;display:block}
-  .code{margin-top:14px;font-size:11px;color:#8d8d8d;word-break:break-all;background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:10px;max-height:80px;overflow:auto}
-  .copy{margin-top:12px;width:100%;padding:15px;border:0;border-radius:12px;background:#333;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
-  .close{margin-top:10px;background:none;border:0;color:#7a7a7a;font-family:inherit;font-size:13px;cursor:pointer;text-decoration:underline}
-  .spin{width:38px;height:38px;margin:24px auto;border:3px solid #2a2a2a;border-top-color:#ff2d78;border-radius:50%;animation:sp 1s linear infinite}
+  .code{margin-top:14px;font-size:11px;color:#666;word-break:break-all;background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:10px;max-height:80px;overflow:auto}
+  .copy{margin-top:12px;width:100%;padding:14px;border:0;border-radius:7px;background:linear-gradient(135deg,var(--brand-start),var(--brand-end));color:#fff;font:700 14px inherit;cursor:pointer}
+  .close{margin-top:12px;background:none;border:0;color:var(--muted);font:13px inherit;cursor:pointer;text-decoration:underline}
+  .spin{width:38px;height:38px;margin:24px auto;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:sp 1s linear infinite}
   @keyframes sp{to{transform:rotate(360deg)}}
-  .wait{margin-top:14px;font-size:12px;color:#00c878;font-weight:600}
+  .wait{margin-top:14px!important;color:var(--success)!important;font-weight:650}
   .hide{display:none}
+  @media(max-width:767px){
+    .topbar{height:54px}.brand-logo{width:88px}.page{max-width:none}.profile-cover{height:148px}.profile-row{padding:0 14px;min-height:68px}.avatar{width:76px;height:76px;margin-top:-30px}.identity{padding-left:8px}.identity h1{font-size:16px}.content{padding:0 14px;margin-top:0}.section-label{margin-top:10px}.intro{padding-top:18px}.intro h2{font-size:22px}.video{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:0}.details{padding-top:20px}.price-line{align-items:flex-end}.price{font-size:22px}.btn{font-size:14px;min-height:54px}}
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <span class="tag">ETAPA FINAL DE LIBERAÇÃO</span>
-    <h1>🎉 Bem-vindo ao <span>MAIOR Privacy do Brasil</span></h1>
-    <p class="lead">Seu acesso vitalício já foi reservado com sucesso ✔️<br />Falta apenas 1 etapa para liberar sua entrada completa no grupo VIP.</p>
+  <header class="topbar"><img class="brand-logo" src="/images/logo.svg" alt="Privacy" /></header>
+  <main class="page">
+    <section aria-label="Perfil de Jane">
+      <div class="profile-cover"><span class="media-count">▶ 87 Mídias</span></div>
+      <div class="profile-row">
+        <img class="avatar" src="/images/perfil.jpg" alt="Foto de perfil de Jane" />
+        <div class="identity"><div class="identity-line"><h1>Jane</h1><span class="verified" aria-label="Perfil verificado">✓</span></div><p class="handle">@janevódohot</p></div>
+      </div>
+    </section>
 
-    <p class="lead"><b>🎥 Assista ao vídeo abaixo</b><br />Entenda como funciona a liberação do seu acesso 👇</p>
+    <div class="content">
+      <div class="section-label">Etapa final de liberação</div>
+      <section class="intro">
+        <p class="eyebrow">Acesso reservado com sucesso</p>
+        <h2>🎉 Bem-vindo ao MAIOR Privacy do Brasil</h2>
+        <p class="lead">Seu acesso vitalício já foi reservado com sucesso ✔️<br>Falta apenas 1 etapa para liberar sua entrada completa no grupo VIP.</p>
+        <p class="video-heading">🎥 Assista ao vídeo abaixo</p>
+        <p class="video-subtitle">Entenda como funciona a liberação do seu acesso 👇</p>
+        <div class="video"><video src="/videos/upsell01.mp4" controls playsinline preload="metadata" poster="/images/capa.jpeg"></video></div>
+      </section>
 
-    <div class="video">
-      <video src="/videos/upsell01.mp4" controls playsinline preload="metadata" poster="/images/capa.jpeg"></video>
+      <section class="details">
+        <h3>🔒 Etapa final de liberação</h3>
+        <p class="lead">Para concluir a liberação do seu acesso é necessário o pagamento da taxa de liberação. Trata-se de uma cobrança única e não reembolsável, exigida para a execução e liberação do serviço adquirido.</p>
+        <ul class="benefits"><li><span class="check">✓</span>Acesso completo aos grupos</li><li><span class="check">✓</span>Conteúdo exclusivo desbloqueado</li><li><span class="check">✓</span>Entrada após a confirmação do pagamento</li></ul>
+        <div class="notice"><strong>⚠️ Importante:</strong> o pagamento desta taxa é obrigatório e não é reembolsado após o pagamento.</div>
+        <div class="payment"><div class="price-line"><span class="price-label">Taxa de liberação</span><div class="price">R$ 13,99 <small>cobrança única</small></div></div><button class="btn" id="cta" type="button">PAGAR TAXA DE LIBERAÇÃO — R$ 13,99</button></div>
+        <p class="reserved">🔐 Seu acesso está reservado</p><p class="safe">Pagamento processado com segurança via Pix.</p>
+      </section>
     </div>
-
-    <h2 style="margin-top:24px;font-size:18px;font-weight:800">🔒 Etapa final de liberação</h2>
-    <p class="lead">Para concluir a liberação do seu acesso é necessário o pagamento da taxa de liberação. Trata-se de uma cobrança única e não reembolsável, exigida para a execução e liberação do serviço adquirido.</p>
-
-    <ul class="bul">
-      <li>✓ Acesso completo aos grupos</li>
-      <li>✓ Conteúdo exclusivo desbloqueado</li>
-      <li>✓ Entrada após a confirmação do pagamento</li>
-    </ul>
-
-    <ul class="bul">
-      <li><b>⚠️ Importante:</b> o pagamento desta taxa é obrigatório e não é reembolsado após o pagamento.</li>
-    </ul>
-
-    <div class="price">
-      <div class="now">R$ 13,99 <small>cobrança única</small></div>
-      <button class="btn" id="cta" type="button">PAGAR TAXA DE LIBERAÇÃO — R$ 13,99</button>
-    </div>
-
-    <h2 style="margin-top:24px;font-size:16px;font-weight:800;text-align:center">🔐 Seu acesso está reservado</h2>
-    <p class="safe">Pagamento processado com segurança via Pix.</p>
   </main>
 
-  <div class="ov" id="ov">
-    <div class="box">
-      <div id="st-load">
-        <h2>Gerando seu PIX...</h2>
-        <div class="spin"></div>
-        <p>Aguarde alguns segundos.</p>
-      </div>
-
-      <div id="st-qr" class="hide">
-        <h2>Pague R$ 13,99 no PIX</h2>
-        <p>Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p>
-        <div class="qr"><img id="qr-img" alt="QR Code do PIX" /></div>
-        <div class="code" id="qr-code"></div>
-        <button class="copy" id="copy" type="button">📋 Copiar código PIX</button>
-        <p class="wait">⏳ Aguardando confirmação do pagamento...</p>
-        <button class="close" type="button" onclick="fecharPix()">Fechar</button>
-      </div>
-
-      <div id="st-err" class="hide">
-        <h2>Não foi possível gerar o PIX</h2>
-        <p id="err-msg">Tente novamente em instantes.</p>
-        <button class="copy" type="button" onclick="gerarPix()">Tentar novamente</button>
-        <button class="close" type="button" onclick="fecharPix()">Fechar</button>
-      </div>
-    </div>
-  </div>
+  <div class="ov" id="ov"><div class="box">
+    <div id="st-load"><h2>Gerando seu PIX...</h2><div class="spin"></div><p>Aguarde alguns segundos.</p></div>
+    <div id="st-qr" class="hide"><h2>Pague R$ 13,99 no PIX</h2><p>Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p><div class="qr"><img id="qr-img" alt="QR Code do PIX" /></div><div class="code" id="qr-code"></div><button class="copy" id="copy" type="button">📋 Copiar código PIX</button><p class="wait">⏳ Aguardando confirmação do pagamento...</p><button class="close" type="button" onclick="fecharPix()">Fechar</button></div>
+    <div id="st-err" class="hide"><h2>Não foi possível gerar o PIX</h2><p id="err-msg">Tente novamente em instantes.</p><button class="copy" type="button" onclick="gerarPix()">Tentar novamente</button><button class="close" type="button" onclick="fecharPix()">Fechar</button></div>
+  </div></div>
 
 <script>
 var VALOR = 13.99;
@@ -181,8 +177,8 @@ document.getElementById('cta').addEventListener('click', abrirPix);
 document.getElementById('copy').addEventListener('click', function(){
   if(!copyPaste) return;
   var btn = this;
-  function ok(){ btn.textContent='✅ Código copiado!'; btn.style.background='#2e7d32';
-    setTimeout(function(){btn.textContent='📋 Copiar código PIX'; btn.style.background='#333';},2500); }
+  function ok(){ btn.textContent='✅ Código copiado!'; btn.style.background='#35a866';
+    setTimeout(function(){btn.textContent='📋 Copiar código PIX'; btn.style.background='linear-gradient(135deg,#ff8e38,#ff4629)';},2500); }
   if(navigator.clipboard){ navigator.clipboard.writeText(copyPaste).then(ok).catch(fallback); } else { fallback(); }
   function fallback(){
     var t=document.createElement('textarea'); t.value=copyPaste; document.body.appendChild(t);
