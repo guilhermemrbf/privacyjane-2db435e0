@@ -15,11 +15,8 @@
   .topbar{height:58px;border-bottom:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:10}
   .brand-logo{display:block;width:92px;height:auto}
   .page{width:100%;max-width:1140px;margin:0 auto;background:#fff}
-  .profile-cover{height:230px;background:url('/images/capa.jpeg') center 38%/cover no-repeat;position:relative}
-  .profile-cover::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.25))}
-  .media-count{position:absolute;right:20px;bottom:14px;z-index:1;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.55)}
-  .profile-row{display:flex;align-items:center;min-height:78px;padding:0 22px;position:relative}
-  .avatar{width:92px;height:92px;object-fit:cover;border-radius:50%;border:4px solid #fff;margin-top:-38px;position:relative;z-index:2;background:#fff}
+  .profile-row{display:flex;align-items:center;min-height:94px;padding:12px 22px;border-bottom:1px solid var(--line);position:relative}
+  .avatar{width:70px;height:70px;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);position:relative;background:#fff}
   .identity{padding:3px 0 0 10px}
   .identity-line{display:flex;align-items:center;gap:5px}
   .identity h1{font-size:17px;line-height:1.2;font-weight:700;letter-spacing:0}
@@ -33,8 +30,13 @@
   .lead{margin-top:10px;font-size:14px;line-height:1.6;color:#686868}
   .video-heading{margin-top:22px;font-size:15px;font-weight:700;color:var(--ink)}
   .video-subtitle{font-size:13px;color:var(--muted);margin-top:2px}
-  .video{margin-top:12px;overflow:hidden;border:1px solid var(--line);background:#111;border-radius:6px}
-  .video video{display:block;width:100%;max-height:430px;background:#111}
+  .video{margin-top:12px;overflow:hidden;border:1px solid var(--line);background:#111;border-radius:6px;position:relative;aspect-ratio:16/9;box-shadow:0 5px 18px rgba(0,0,0,.12)}
+  .video video{display:block;width:100%;height:100%;object-fit:contain;background:#111}
+  .video-start{position:absolute;inset:0;border:0;background:rgba(0,0,0,.18);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;font:700 13px/1.2 inherit;text-shadow:0 1px 3px rgba(0,0,0,.7);transition:background .15s}
+  .video-start:hover{background:rgba(0,0,0,.26)}
+  .video-start.hidden{display:none}
+  .play-icon{display:flex;align-items:center;justify-content:center;width:68px;height:68px;border-radius:50%;background:var(--brand);box-shadow:0 4px 18px rgba(0,0,0,.3);font-size:28px;padding-left:4px;text-shadow:none}
+  .watch-label{background:rgba(0,0,0,.72);padding:7px 12px;border-radius:4px}
   .details{padding:22px 4px 0}
   .details h3{font-size:18px;font-weight:700;letter-spacing:0}
   .benefits{list-style:none;margin-top:18px;border-top:1px solid var(--line)}
@@ -68,14 +70,13 @@
   .wait{margin-top:14px!important;color:var(--success)!important;font-weight:650}
   .hide{display:none}
   @media(max-width:767px){
-    .topbar{height:54px}.brand-logo{width:88px}.page{max-width:none}.profile-cover{height:148px}.profile-row{padding:0 14px;min-height:68px}.avatar{width:76px;height:76px;margin-top:-30px}.identity{padding-left:8px}.identity h1{font-size:16px}.content{padding:0 14px;margin-top:0}.section-label{margin-top:10px}.intro{padding-top:18px}.intro h2{font-size:22px}.video{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:0}.details{padding-top:20px}.price-line{align-items:flex-end}.price{font-size:22px}.btn{font-size:14px;min-height:54px}}
+    .topbar{height:54px}.brand-logo{width:88px}.page{max-width:none}.profile-row{padding:10px 14px;min-height:82px}.avatar{width:62px;height:62px}.identity{padding-left:8px}.identity h1{font-size:16px}.content{padding:0 14px;margin-top:0}.section-label{margin-top:10px}.intro{padding-top:18px}.intro h2{font-size:22px}.video{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:0;box-shadow:none}.play-icon{width:62px;height:62px;font-size:25px}.details{padding-top:20px}.price-line{align-items:flex-end}.price{font-size:22px}.btn{font-size:14px;min-height:54px}}
 </style>
 </head>
 <body>
   <header class="topbar"><img class="brand-logo" src="/images/logo.svg" alt="Privacy" /></header>
   <main class="page">
     <section aria-label="Perfil de Jane">
-      <div class="profile-cover"><span class="media-count">▶ 87 Mídias</span></div>
       <div class="profile-row">
         <img class="avatar" src="/images/perfil.jpg" alt="Foto de perfil de Jane" />
         <div class="identity"><div class="identity-line"><h1>Jane</h1><span class="verified" aria-label="Perfil verificado">✓</span></div><p class="handle">@janevódohot</p></div>
@@ -90,7 +91,13 @@
         <p class="lead">Seu acesso vitalício já foi reservado com sucesso ✔️<br>Falta apenas 1 etapa para liberar sua entrada completa no grupo VIP.</p>
         <p class="video-heading">🎥 Assista ao vídeo abaixo</p>
         <p class="video-subtitle">Entenda como funciona a liberação do seu acesso 👇</p>
-        <div class="video"><video src="/videos/upsell01.mp4" controls playsinline preload="metadata" poster="/images/capa.jpeg"></video></div>
+        <div class="video">
+          <video id="upsell-video" src="/videos/upsell01.mp4" controls playsinline preload="metadata"></video>
+          <button class="video-start" id="video-start" type="button" aria-label="Reproduzir vídeo">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            <span class="watch-label">TOQUE PARA ASSISTIR</span>
+          </button>
+        </div>
       </section>
 
       <section class="details">
@@ -174,6 +181,16 @@ function verificar(){
   }, 5000);
 }
 document.getElementById('cta').addEventListener('click', abrirPix);
+var upsellVideo = document.getElementById('upsell-video');
+var videoStart = document.getElementById('video-start');
+videoStart.addEventListener('click', function(){
+  var playResult = upsellVideo.play();
+  if(playResult && playResult.catch) playResult.catch(function(){});
+});
+upsellVideo.addEventListener('play', function(){ videoStart.classList.add('hidden'); });
+upsellVideo.addEventListener('pause', function(){
+  if(upsellVideo.currentTime === 0 || upsellVideo.ended) videoStart.classList.remove('hidden');
+});
 document.getElementById('copy').addEventListener('click', function(){
   if(!copyPaste) return;
   var btn = this;
