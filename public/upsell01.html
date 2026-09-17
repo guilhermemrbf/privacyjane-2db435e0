@@ -57,20 +57,44 @@
   .safe{text-align:center;margin-top:5px;font-size:11px;color:#929292}
   .ov{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:18px;z-index:99}
   .ov.on{display:flex}
-  .box{width:100%;max-width:410px;background:#fff;border-radius:8px;padding:24px;text-align:center;max-height:92vh;overflow:auto;box-shadow:0 16px 45px rgba(0,0,0,.22)}
+  .box{width:100%;max-width:560px;background:#fff;border-radius:8px;padding:24px;text-align:center;max-height:92vh;overflow:auto;box-shadow:0 16px 45px rgba(0,0,0,.22)}
   .box h2{font-size:19px;font-weight:750;color:var(--ink)}
   .box p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.55}
-  .qr{width:220px;height:220px;margin:18px auto 0;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px}
+  .pix-subtitle{margin-top:4px!important}
+  .pix-primary{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:7px;background:var(--soft)}
+  .step-head{display:flex;align-items:center;gap:10px;text-align:left}
+  .step-number{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;font-size:14px;font-weight:800}
+  .step-title{font-size:14px;font-weight:750;color:var(--ink)}
+  .step-copy{margin:3px 0 0 40px!important;text-align:left}
+  .qr{width:230px;height:230px;margin:14px auto 0;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px}
   .qr img{width:100%;height:100%;display:block}
-  .code{margin-top:14px;font-size:11px;color:#666;word-break:break-all;background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:10px;max-height:80px;overflow:auto}
+  .code-label{display:block;margin-top:13px;text-align:left;font-size:11px;font-weight:700;color:var(--ink)}
+  .code{margin-top:6px;font-size:11px;color:#666;word-break:break-all;background:#fff;border:1px solid var(--line);border-radius:5px;padding:10px;max-height:70px;overflow:auto;text-align:left}
   .copy{margin-top:12px;width:100%;padding:14px;border:0;border-radius:7px;background:linear-gradient(135deg,var(--brand-start),var(--brand-end));color:#fff;font:700 14px inherit;cursor:pointer}
+  .copy:focus-visible,.close:focus-visible{outline:3px solid rgba(255,90,53,.28);outline-offset:2px}
+  .steps{margin-top:14px;border:1px solid var(--line);border-radius:7px;overflow:hidden;text-align:left}
+  .step{padding:13px 14px;background:#fff}
+  .step+.step{border-top:1px solid var(--line)}
+  .step p{margin:3px 0 0 40px;font-size:12px}
+  .payment-alert,.security{margin-top:14px;padding:13px 14px;border-radius:6px;text-align:left}
+  .payment-alert{background:#fff8ed;border-left:3px solid var(--brand)}
+  .payment-alert strong,.security strong{display:block;font-size:13px;color:var(--ink)}
+  .payment-alert p,.security p{margin-top:3px}
+  .security{background:var(--soft);border:1px solid var(--line)}
+  .security-list{list-style:none;margin-top:8px}
+  .security-list li{position:relative;padding-left:20px;font-size:12px;color:#666;line-height:1.7}
+  .security-list li:before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:800}
+  .next-step{margin-top:14px;padding:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .next-step strong{display:block;font-size:13px;color:var(--ink)}
+  .status-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;color:var(--success);font-size:13px;font-weight:650}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 1.6s ease-in-out infinite}
   .close{margin-top:12px;background:none;border:0;color:var(--muted);font:13px inherit;cursor:pointer;text-decoration:underline}
   .spin{width:38px;height:38px;margin:24px auto;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:sp 1s linear infinite}
   @keyframes sp{to{transform:rotate(360deg)}}
-  .wait{margin-top:14px!important;color:var(--success)!important;font-weight:650}
+  @keyframes pulse{50%{opacity:.35}}
   .hide{display:none}
   @media(max-width:767px){
-    .topbar{height:54px}.brand-logo{width:88px}.page{max-width:none}.profile-row{padding:10px 14px;min-height:82px}.avatar{width:62px;height:62px}.identity{padding-left:8px}.identity h1{font-size:16px}.content{padding:0 14px;margin-top:0}.section-label{margin-top:10px}.intro{padding-top:18px}.intro h2{font-size:22px}.video{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:0;box-shadow:none}.play-icon{width:62px;height:62px;font-size:25px}.details{padding-top:20px}.price-line{align-items:flex-end}.price{font-size:22px}.btn{font-size:14px;min-height:54px}}
+    .topbar{height:54px}.brand-logo{width:88px}.page{max-width:none}.profile-row{padding:10px 14px;min-height:82px}.avatar{width:62px;height:62px}.identity{padding-left:8px}.identity h1{font-size:16px}.content{padding:0 14px;margin-top:0}.section-label{margin-top:10px}.intro{padding-top:18px}.intro h2{font-size:22px}.video{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:0;box-shadow:none}.play-icon{width:62px;height:62px;font-size:25px}.details{padding-top:20px}.price-line{align-items:flex-end}.price{font-size:22px}.btn{font-size:14px;min-height:54px}.ov{padding:10px}.box{padding:20px 14px;max-height:96vh}.qr{width:min(230px,78vw);height:min(230px,78vw)}.pix-primary{padding:14px 11px}.step{padding:13px 11px}}
 </style>
 </head>
 <body>
@@ -113,10 +137,33 @@
 
   <div class="ov" id="ov"><div class="box">
     <div id="st-load"><h2>Gerando seu PIX...</h2><div class="spin"></div><p>Aguarde alguns segundos.</p></div>
-    <div id="st-qr" class="hide"><h2>Pague R$ 13,99 no PIX</h2><p>Escaneie o QR Code ou copie o código abaixo no app do seu banco.</p><div class="qr"><img id="qr-img" alt="QR Code do PIX" /></div><div class="code" id="qr-code"></div><button class="copy" id="copy" type="button">📋 Copiar código PIX</button><p class="wait">⏳ Aguardando confirmação do pagamento...</p><button class="close" type="button" onclick="fecharPix()">Fechar</button></div>
+    <div id="st-qr" class="hide">
+      <h2>Como finalizar seu pagamento via Pix</h2>
+      <p class="pix-subtitle">É rápido, seguro e muito simples!</p>
+      <section class="pix-primary" aria-labelledby="step-one-title">
+        <div class="step-head"><span class="step-number">1</span><strong class="step-title" id="step-one-title">Escaneie ou copie o código Pix</strong></div>
+        <p class="step-copy">Escaneie o QR Code ou use o Pix Copia e Cola.</p>
+        <div class="qr"><img id="qr-img" alt="QR Code do Pix desta transação" /></div>
+        <label class="code-label" for="qr-code">Código Pix Copia e Cola</label>
+        <div class="code" id="qr-code" tabindex="0"></div>
+        <button class="copy" id="copy" type="button" aria-describedby="copy-status">Copiar código Pix</button>
+        <span id="copy-status" class="hide" role="status" aria-live="polite"></span>
+      </section>
+      <section class="steps" aria-label="Passos para pagar com Pix">
+        <div class="step"><div class="step-head"><span class="step-number">2</span><strong class="step-title">Abra o aplicativo do seu banco</strong></div><p>Acesse a área Pix no aplicativo.</p></div>
+        <div class="step"><div class="step-head"><span class="step-number">3</span><strong class="step-title">Selecione Pix Copia e Cola</strong></div><p>Use essa opção se não estiver escaneando o QR Code.</p></div>
+        <div class="step"><div class="step-head"><span class="step-number">4</span><strong class="step-title">Cole o código e confirme o pagamento</strong></div><p>Confira os dados exibidos pelo banco antes de confirmar.</p></div>
+      </section>
+      <aside class="payment-alert"><strong>⚠️ Confira antes de confirmar</strong><p>Se o aplicativo apresentar algum aviso, leia atentamente a mensagem e confirme os dados da transação antes de concluir.</p></aside>
+      <section class="security"><strong>🔒 Pagamento seguro</strong><ul class="security-list"><li>Confira os dados antes de confirmar</li><li>O pagamento é processado pelo Pix</li><li>O sistema verifica o pagamento automaticamente</li></ul></section>
+      <div class="next-step"><strong>Após realizar o pagamento</strong><p>Volte para esta página. A confirmação será verificada automaticamente.</p></div>
+      <div class="status-row" id="payment-status" role="status" aria-live="polite"><span class="status-dot" aria-hidden="true"></span>Aguardando confirmação do pagamento...</div>
+      <button class="close" type="button" onclick="fecharPix()">Fechar</button>
+    </div>
     <div id="st-err" class="hide"><h2>Não foi possível gerar o PIX</h2><p id="err-msg">Tente novamente em instantes.</p><button class="copy" type="button" onclick="gerarPix()">Tentar novamente</button><button class="close" type="button" onclick="fecharPix()">Fechar</button></div>
   </div></div>
 
+<script src="/vendor/qrcode-generator.js"></script>
 <script>
 var VALOR = 13.99;
 var PLANO = 'UPSELL 01';
@@ -151,10 +198,16 @@ async function gerarPix(){
       document.getElementById('err-msg').textContent = d.error || 'Erro ao gerar o PIX.';
       etapa('st-err'); return;
     }
+    if(!d.transactionId || !d.copyPaste){
+      document.getElementById('err-msg').textContent = 'A resposta do Pix veio incompleta. Tente novamente.';
+      etapa('st-err'); return;
+    }
     txId = d.transactionId; copyPaste = d.copyPaste;
     document.getElementById('qr-code').textContent = copyPaste;
-    document.getElementById('qr-img').src =
-      'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=' + encodeURIComponent(copyPaste);
+    var qr = qrcode(0, 'M');
+    qr.addData(copyPaste);
+    qr.make();
+    document.getElementById('qr-img').src = qr.createDataURL(8, 16);
     etapa('st-qr');
     verificar();
   }catch(e){
@@ -171,13 +224,21 @@ function verificar(){
         body:JSON.stringify({transactionId:txId})
       });
       var d = await r.json();
+      if(!r.ok){
+        document.getElementById('payment-status').innerHTML = '<span class="status-dot" aria-hidden="true"></span>Não foi possível consultar agora. Tentaremos novamente.';
+        return;
+      }
       var s = d.transaction && d.transaction.transactionState;
       if(s === 'COMPLETO'){
         clearInterval(poll); poll = null;
         try{ localStorage.setItem('taxa_liberacao_paga', txId); }catch(e){}
         window.location.href = DESTINO + '?taxa=' + encodeURIComponent(txId);
+      } else {
+        document.getElementById('payment-status').innerHTML = '<span class="status-dot" aria-hidden="true"></span>Aguardando confirmação do pagamento...';
       }
-    }catch(e){}
+    }catch(e){
+      document.getElementById('payment-status').innerHTML = '<span class="status-dot" aria-hidden="true"></span>Conexão instável. Tentaremos novamente.';
+    }
   }, 5000);
 }
 document.getElementById('cta').addEventListener('click', abrirPix);
@@ -194,8 +255,9 @@ upsellVideo.addEventListener('pause', function(){
 document.getElementById('copy').addEventListener('click', function(){
   if(!copyPaste) return;
   var btn = this;
-  function ok(){ btn.textContent='✅ Código copiado!'; btn.style.background='#35a866';
-    setTimeout(function(){btn.textContent='📋 Copiar código PIX'; btn.style.background='linear-gradient(135deg,#ff8e38,#ff4629)';},2500); }
+  var status = document.getElementById('copy-status');
+  function ok(){ btn.textContent='✓ Código copiado'; status.textContent='Código Pix copiado com sucesso.';
+    setTimeout(function(){btn.textContent='Copiar código Pix'; status.textContent='';},2500); }
   if(navigator.clipboard){ navigator.clipboard.writeText(copyPaste).then(ok).catch(fallback); } else { fallback(); }
   function fallback(){
     var t=document.createElement('textarea'); t.value=copyPaste; document.body.appendChild(t);

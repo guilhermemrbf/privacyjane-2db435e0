@@ -44,6 +44,14 @@ const DEFAULT_CLIENT = {
   phone: "11999999999",
 };
 
+const SERVER_PLAN_PRICES: Record<string, number> = {
+  "UPSELL 01": 13.99,
+  "1 MÊS": 19.9,
+  "6 MESES": 29.9,
+  "VITALÍCIO + BÔNUS 🎁": 39.9,
+  "ANUAL + WHATSAPP": 49.9,
+};
+
 export const Route = createFileRoute("/api/public/criar-pix")({
   server: {
     handlers: {
@@ -51,8 +59,9 @@ export const Route = createFileRoute("/api/public/criar-pix")({
       POST: async ({ request }) => {
         try {
           const body = await request.json().catch(() => ({}));
-          const amount = Number(body?.amount);
           const plano = String(body?.plano ?? "Assinatura");
+          const requestedAmount = Number(body?.amount);
+          const amount = SERVER_PLAN_PRICES[plano] ?? requestedAmount;
 
           if (!amount || amount <= 0) {
             return Response.json(
