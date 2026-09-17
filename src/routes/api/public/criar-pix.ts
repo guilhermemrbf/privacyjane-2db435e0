@@ -49,7 +49,7 @@ const SERVER_PLAN_PRICES: Record<string, number> = {
   "1 MÊS": 19.9,
   "6 MESES": 29.9,
   "VITALÍCIO + BÔNUS 🎁": 39.9,
-  "ANUAL + WHATSAPP 💚": 49.9,
+  "ANUAL + WHATSAPP": 49.9,
 };
 
 export const Route = createFileRoute("/api/public/criar-pix")({
