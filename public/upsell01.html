@@ -163,6 +163,7 @@
     <div id="st-err" class="hide"><h2>Não foi possível gerar o PIX</h2><p id="err-msg">Tente novamente em instantes.</p><button class="copy" type="button" onclick="gerarPix()">Tentar novamente</button><button class="close" type="button" onclick="fecharPix()">Fechar</button></div>
   </div></div>
 
+<script src="/vendor/qrcode-generator.js"></script>
 <script>
 var VALOR = 13.99;
 var PLANO = 'UPSELL 01';
@@ -203,8 +204,10 @@ async function gerarPix(){
     }
     txId = d.transactionId; copyPaste = d.copyPaste;
     document.getElementById('qr-code').textContent = copyPaste;
-    document.getElementById('qr-img').src =
-      'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=' + encodeURIComponent(copyPaste);
+    var qr = qrcode(0, 'M');
+    qr.addData(copyPaste);
+    qr.make();
+    document.getElementById('qr-img').src = qr.createDataURL(8, 16);
     etapa('st-qr');
     verificar();
   }catch(e){
