@@ -80,7 +80,8 @@
   .step+.step{border-top:1px solid var(--line)}
   .step p{margin:3px 0 0 44px;font-size:12px}
   .payment-alert,.security{margin-top:14px;padding:13px 14px;border-radius:6px;text-align:left}
-  .payment-alert{background:#ffd91a;border:1px solid #e5bb00;border-left:5px solid #b88e00;color:#342900;box-shadow:0 5px 14px rgba(177,137,0,.14)}
+  .payment-alert{display:flex;align-items:center;gap:14px;background:#ffd91a;border:1px solid #e5bb00;border-radius:7px;color:#272000;box-shadow:0 5px 14px rgba(177,137,0,.18)}
+  .payment-alert-icon{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border:2px solid #272000;border-radius:50%;font-size:23px;font-weight:800}
   .payment-alert strong,.security strong{display:block;font-size:13px;color:var(--ink)}
   .payment-alert p,.security p{margin-top:3px}
   .security{background:var(--soft);border:1px solid var(--line)}
@@ -160,7 +161,7 @@
         <div class="step"><div class="step-head"><span class="step-number">3</span><strong class="step-title">Selecione Pix Copia e Cola</strong></div><p>Use essa opção se não estiver escaneando o QR Code.</p></div>
         <div class="step"><div class="step-head"><span class="step-number">4</span><strong class="step-title">Cole o código e confirme o pagamento</strong></div><p>Confira os dados exibidos pelo banco antes de confirmar.</p></div>
       </section>
-      <aside class="payment-alert"><strong>⚠️ Confira antes de confirmar</strong><p>Se o aplicativo apresentar algum aviso, leia atentamente a mensagem e confirme os dados da transação antes de concluir.</p></aside>
+      <aside class="payment-alert"><span class="payment-alert-icon" aria-hidden="true">!</span><div><strong>Caso apareça algum alerta no seu banco, leia com atenção.</strong><p>Confira os dados da transação antes de concluir o pagamento.</p></div></aside>
       <section class="security"><strong>🔒 Pagamento seguro</strong><ul class="security-list"><li>Confira os dados antes de confirmar</li><li>O pagamento é processado pelo Pix</li><li>O sistema verifica o pagamento automaticamente</li></ul></section>
       <div class="next-step"><strong>Após realizar o pagamento</strong><p>Volte para esta página. A confirmação será verificada automaticamente.</p></div>
       <div class="status-row" id="payment-status" role="status" aria-live="polite"><span class="status-dot" aria-hidden="true"></span>Aguardando confirmação do pagamento...</div>
